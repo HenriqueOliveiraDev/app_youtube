@@ -10,7 +10,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     Search search = Search();
-    search.searchVideo('henrique');
+    search.search('henrique', 'video');
     super.initState();
   }
 
@@ -19,7 +19,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-        'Fluttuber',
+        'App Tube',
       )),
     );
   }
