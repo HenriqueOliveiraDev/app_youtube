@@ -1,6 +1,7 @@
+import 'package:app_youtube/src/theme/dark_theme.dart';
+import 'package:app_youtube/src/theme/light_theme.dart';
 import 'package:app_youtube/src/view/home.dart';
-import 'package:app_youtube/src/view/theme/dark_theme.dart';
-import 'package:app_youtube/src/view/theme/light_theme.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {

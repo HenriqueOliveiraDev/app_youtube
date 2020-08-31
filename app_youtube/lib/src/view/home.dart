@@ -1,3 +1,4 @@
+import 'package:app_youtube/src/service/search.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -6,6 +7,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    Search search = Search();
+    search.searchVideo('henrique');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
