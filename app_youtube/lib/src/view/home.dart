@@ -1,4 +1,7 @@
+import 'package:app_youtube/src/controller/home_bloc.dart';
+import 'package:app_youtube/src/models/videos.dart';
 import 'package:app_youtube/src/service/search.dart';
+import 'package:app_youtube/src/view/components/item_list.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -7,10 +10,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  HomeBloc controller = HomeBloc();
+  Search search = Search();
+
   @override
   void initState() {
-    Search search = Search();
-    search.search('henrique', 'video');
+    load();
     super.initState();
   }
 
@@ -21,6 +26,26 @@ class _HomeState extends State<Home> {
           title: Text(
         'App Tube',
       )),
+      body: StreamBuilder(
+          stream: controller.streamOutput,
+          initialData: [],
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if(snapshot.hasError){
+              print('erro');
+            }
+            print('AQUUUIII');
+            print(snapshot.data);
+            return ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext ctx, int item) {
+                  return ItemList(video: snapshot.data[item],);
+                });
+          }),
     );
+  }
+
+  load() async {
+    controller.addListVideo(await search.search('Capimzera', 'video'));
   }
 }
