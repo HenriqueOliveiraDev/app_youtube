@@ -1,7 +1,7 @@
 import 'package:app_youtube/src/controller/home_bloc.dart';
-import 'package:app_youtube/src/models/videos.dart';
-import 'package:app_youtube/src/service/search.dart';
+import 'package:app_youtube/src/service/searchYoutube.dart';
 import 'package:app_youtube/src/view/components/item_list.dart';
+import 'package:app_youtube/src/view/components/search.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   HomeBloc controller = HomeBloc();
-  Search search = Search();
+  SearchYoutube search = SearchYoutube();
 
   @override
   void initState() {
@@ -22,7 +22,11 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(actions: [
+        IconButton(icon: Icon(Icons.search), onPressed: (){
+          showSearch(context: context, delegate: Search());
+        })
+      ],
           title: Text(
         'App Tube',
       )),

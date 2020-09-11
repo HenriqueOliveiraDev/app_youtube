@@ -30,13 +30,10 @@ class DescriptionVideo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                Text(title, style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),),
                 Text(channelTitle),
               ],
             ),
