@@ -1,4 +1,5 @@
 import 'package:app_youtube/src/controller/home_bloc.dart';
+import 'package:app_youtube/src/models/videos.dart';
 import 'package:app_youtube/src/service/searchYoutube.dart';
 import 'package:app_youtube/src/view/components/item_list.dart';
 import 'package:app_youtube/src/view/components/search.dart';

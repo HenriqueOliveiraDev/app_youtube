@@ -1,10 +1,12 @@
 import 'package:app_youtube/src/controller/home_bloc.dart';
+import 'package:app_youtube/src/models/videos.dart';
 import 'package:app_youtube/src/service/searchYoutube.dart';
 import 'package:flutter/material.dart';
 
 class Search extends SearchDelegate {
   HomeBloc controller = new HomeBloc();
   SearchYoutube searchYoutube = new SearchYoutube();
+  Video video = new Video();
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -40,12 +42,22 @@ class Search extends SearchDelegate {
         stream: controller.streamOutput,
         initialData: [],
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return ListView.builder(
+          if (snapshot.data == []) {
+            return Center(
+              child: Text('Nenhum video encontrado'),
+            );
+          } else {
+            List<Video> videos = snapshot.data['items'].map<Video>((item) {
+              return Video.fromJson(item);
+            }).toList();
+            return ListView.builder(
               padding: const EdgeInsets.all(8),
               itemCount: snapshot.data.length,
               itemBuilder: (BuildContext ctx, int item) {
-                return Text(snapshot.data[item]['name']);
-              });
+                return Text(videos[item].name);
+              },
+            );
+          }
         });
   }
 
